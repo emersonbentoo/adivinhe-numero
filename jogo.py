@@ -4,15 +4,20 @@ while True:
     o = int(input("Digite:\n1 - Jogar\n2 - Sair\n" + '='*20+'\n'))
     if o == 1:
         pc = random.randint(0,10)
-        jogador =int (input("Digite um valor de 0 a 10: "))
-        if jogador >= 0 and jogador <=10 :
-            if jogador != pc:
-                print(f"Voce errou.\nEu pensei no numero {pc}")
+        for tentativa in range(3,0,-1) :
+            jogador =int (input("Digite um valor de 0 a 10: "))
+            if jogador >= 0 and jogador <=10 :
+                if jogador != pc:
+                    print(f"Você errou. Você tem {tentativa - 1} tentativa(s) restante(s).")
+                    if tentativa == 1:
+                        print(f"Voce perdeu, o numero que pensei foi {pc}")
+
+                else:
+                    print(f"Eu e voce pensamos no numero {pc}.\nParabens voce ganhou\nDeseja continuar")
             else:
-                print(f"Eu e voce pensamos no numero {pc}.\nParabens voce ganhou\nDeseja continuar")
-        else:
-            print("Operação invalida!\nPor favor digite novamente")
-    elif o ==2:
+                print("Operação invalida!\nPor favor digite novamente")
+
+    elif o == 2:
         print("Foi um prazer ter voce aqui!")
         break
     else:
